@@ -1,0 +1,22 @@
+/*
+    Created on : Jan 26, 2016, 11:50:21 AM
+    Author     : annemie.roelants
+*/
+
+#breadHome{
+    float:right;
+    width:30%;
+    margin: 1em 0 1em 1em;
+}
+header{
+    margin-bottom:7%;
+    border-bottom:7px solid #d58512;
+}
+.btn-primary {
+    background: #d58512;
+    color: #ffffff;
+    border:none;
+}
+.btn-primary:hover{
+    background:#8a6d3b;
+}
