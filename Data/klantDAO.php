@@ -1,39 +1,33 @@
 <?php
+
 require_once '../Entities/Klant.php';
 
-class klantDAO{
-    public function getByUser($email){
-        $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
-            $sql = "select mvc_boeken.id as boek_id, titel, genre_id, genre  
-                    from mvc_boeken, mvc_genres  
-                    where genre_id = mvc_genres.id and mvc_boeken.id = :id" ;
+class klantDAO {
+
+    public function getByUser($email) {
+        $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        $sql = "select * from klant where emailadres =  :emailadres";
+        $stmt = $dba->prepare($sql);
+        $stmt->execute(array(':id' => $email));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
     }
-    
-//    public function create($email, $vn $fmn, $adres, $postcode, $gemeente) {
-//            $bestaandeUser = $this->getByTitel($titel);
-//            if (!is_null($bestaandBoek)) {
-//                    throw new TitelBestaatException();
-//            }
-//
-//            $dbh = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME,  
-//                    DBConfig::$DB_PASSWORD);
-//            $sql = "insert into mvc_boeken (titel, genre_id)  
-//                    values (:titel, :genreId)";
-//            
-//            $stmt = $dbh->prepare($sql);
-//            $stmt->execute(array(':titel' => $titel, ':genreId' => $genreId));
-//
-//            //id van de net ingevoerde boek
-//            $boekId = $dbh->lastInsertId();
-//            $dbh = null;
-//
-//            //genre id ophalen voor het boek
-//            $genreDAO = new GenreDAO();
-//            $genre = $genreDAO->getById($genreId);
-//            //creer boek aan de hand van boekid,titel en genre
-//            $boek = Boek::create($boekId, $titel, $genre);
-//            return $boek;
-//        }
-        
-    
+
+    public function create($email, $wachtwoord, $familienaam, $voornaam, $adres, $postcodeID, $statusID){
+        $bestaandeUser = $this->getByUser($email);
+        if (!is_null($bestaandeUser)) {
+            throw new UserBestaatAlException();
+        }
+
+        $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        $sql = 'insert into klant (emailadres,wachtwoord,familienaam,voornaam,adres,postcodeID, genre_id, statusID)  
+                    values (:email, :wachtwoord, :familienaam, :voornaam, :adres, :postcodeID, :statusID )';
+
+        $stmt = $dba->prepare($sql);
+        $stmt->execute(array(':email' => $email, ':wachtwoord' => $wachtwoord, ':familienaam' => $familienaam, 
+            ':voornaam' =>$voornaam, ':adres' => $adres , ':postcodeID' =>$postcodeID , ':status' => $statusID ));
+            $dbh = null;
+        }
+
 }
