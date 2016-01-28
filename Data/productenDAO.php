@@ -2,11 +2,12 @@
 
 //require_once 'DBConfig.php';
 require_once 'Entities/product.php';
+require_once 'DBConfig.php';
 
 class productDAO {
 
     public function getAllProducts() {
-        $dba = new PDO("mysql:host=localhost;dbname=testphp;charset=utf8", "cursusgebruiker", "cursuspwd");
+        $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $sql = 'select * from producten';
         $result = $dba->query($sql);
         

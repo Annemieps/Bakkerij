@@ -1,33 +1,38 @@
 <?php
 
-require_once '../Entities/Klant.php';
+require_once 'Entities/Klant.php';
+require_once 'DBConfig.php';
 
 class klantDAO {
 
-    public function getByUser($email) {
+    public function getByEmail($email) {
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $sql = "select * from klant where emailadres =  :emailadres";
         $stmt = $dba->prepare($sql);
-        $stmt->execute(array(':id' => $email));
+        $stmt->execute(array(':emailadres' => $email));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return $result;
+        $dba=null;
+        
+        $bestaatOfNiet=count($result);
+        return $bestaatOfNiet;
     }
 
-    public function create($email, $wachtwoord, $familienaam, $voornaam, $adres, $postcodeID, $statusID){
-        $bestaandeUser = $this->getByUser($email);
-        if (!is_null($bestaandeUser)) {
-            throw new UserBestaatAlException();
-        }
+    public function createUser($email, $wachtwoord,$voornaam, $familienaam, $adres, $postcodeID, $gemeente, $statusID){
+        
+        /*$bestaandeUser = $this->getByEmail($email);
+        if ($bestaandeUser!=null) {
+            throw new klantBestaatAlException();
+        }*/
 
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
-        $sql = 'insert into klant (emailadres,wachtwoord,familienaam,voornaam,adres,postcodeID, genre_id, statusID)  
-                    values (:email, :wachtwoord, :familienaam, :voornaam, :adres, :postcodeID, :statusID )';
-
+        $sql = "insert into klant (emailadres, wachtwoord, voornaam, familienaam, adres, postcodeID, gemeente, statusID)  
+                   values(:email,:wachtwoord,:voornaam,:familienaam, :adres, :postcodeID,:gemeente, :statusID )";
+        var_dump($dba);
         $stmt = $dba->prepare($sql);
-        $stmt->execute(array(':email' => $email, ':wachtwoord' => $wachtwoord, ':familienaam' => $familienaam, 
-            ':voornaam' =>$voornaam, ':adres' => $adres , ':postcodeID' =>$postcodeID , ':status' => $statusID ));
-            $dbh = null;
+        var_dump($email, $wachtwoord, $familienaam, $voornaam, $adres, $postcodeID, $gemeente, $statusID);
+        $stmt->execute(array(':email' => $email, ':wachtwoord' => $wachtwoord, ':voornaam' => $voornaam, ':familienaam' => $familienaam, ':adres' => $adres , ':postcodeID' =>  $postcodeID , ':gemeente' => $gemeente , ':statusID' => $statusID ));
+        
+        $dba = null;
         }
-
+        
 }

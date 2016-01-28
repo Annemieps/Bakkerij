@@ -56,7 +56,7 @@
             </section>
             <section>
                 <h2>Onze Producten</h2>
-                <form method="post" action="">
+                <form method="post" action="addToOrder">
                     <table class="table">
                         <thead>
                             <tr>
@@ -69,7 +69,7 @@
                         <?php
                         foreach ($productenLijst as $product) {
                             ?><tr class="row"><td class="col-lg-4"><?php
-                            echo $product->getProductnaam() . "</td>  <td class='col-lg-4'>" . $product->getProductprijs() . "€ </td> <td class='col-lg-4'><input type='text'></input> <br>";
+                            echo $product->getProductnaam() . "</td>  <td class='col-lg-4'>" . $product->getProductprijs() . "€ </td> <td class='col-lg-4'><input type='text'></input> <input type='submit' class='btn btn-primary' value='Bestel'></td> <br>";
                         }
                         ?>
                     </table>

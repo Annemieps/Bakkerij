@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/css.css" rel="stylesheet" type="text/css">
+        <link href="presentation/css/bootstrap.min.css" rel="stylesheet">
+        <link href="presentation/css/css.css" rel="stylesheet" type="text/css">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -24,41 +24,41 @@
                 <h2>Maak een account aan.</h2>
                 <small>Een ultra geheim wachtwoord zal voor u gegenereerd worden</small><br><br>
                 
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" method="post" action="voegKlantToe.php?action=toevoegen">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="email">Email:</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="vn">Voornaam:</label>
+                        <label class="control-label col-sm-2" for="voornaam">Voornaam:</label>
                         <div class="col-sm-6"> 
-                            <input type="text" class="form-control" id="vn" placeholder="Voornaam">
+                            <input type="text" class="form-control" name="voornaam" placeholder="Voornaam">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="fmn">Familienaam:</label>
+                        <label class="control-label col-sm-2" for="familienaam">Familienaam:</label>
                         <div class="col-sm-6"> 
-                            <input type="text" class="form-control" id="fmn" placeholder="Familienaam">
+                            <input type="text" class="form-control" name="familienaam" placeholder="Familienaam">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="adres">Adres:</label>
                         <div class="col-sm-6"> 
-                            <input type="text" class="form-control" id="adres" placeholder="Adress">
+                            <input type="text" class="form-control" name="adres" placeholder="Adress">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="postcode">Postcode:</label>
                         <div class="col-sm-6"> 
-                            <input type="text" class="form-control" id="postcode" placeholder="Postcode">
+                            <input type="text" class="form-control" name="postcode" placeholder="Postcode">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="gemeente">Gemeente:</label>
                         <div class="col-sm-6"> 
-                            <input type="text" class="form-control" id="gemeente" placeholder="gemeente">
+                            <input type="text" class="form-control" name="gemeente" placeholder="gemeente">
                         </div>
                     </div>
                     <div class="form-group"> 
@@ -67,7 +67,13 @@
                         </div>
                     </div>
                 </form>
-
+                 <?php
+                        if (isset($_GET['error']) && $_GET['error'] == "klantbestaat al") {
+                            ?>
+                            <p style="color: red">Dit email adres is al in gebruik.</p>
+                            <?php
+                        }
+                        ?>
             </section>
              
         </div>
