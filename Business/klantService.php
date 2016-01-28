@@ -3,15 +3,19 @@ require_once 'Data/klantDAO.php';
 
 class KlantService{
     public function wachtwoord(){
-//        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-//        $wachtwoord = "";
-//        for ($i = 0; $i <= 6; $i++) {
-//            $wachtwoord . $characters[mt_rand(0, strlen($characters) - 1)];
-//        }
-        $wachtwoord=rand(1,6);
+        $code=array('1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+        $wachtwoordshuffle=  shuffle($code);
+        $wachtwoord= array_slice($code, 2, 6);
         return $wachtwoord;
-        
     }
+    public function safety(){
+        $wachtwoord=  $this->wachtwoord();
+        $hash1=  substr($this->maakKlant($familienaam),2,3);
+        $hashedvalue=  sha1($hash1.$wachtwoord);
+        $hash2=  sha1(strrev($hashedvalue));
+        return $hash2;
+    }
+    
     
     
     public function maakKlant($email, $wachtwoord, $familienaam, $voornaam, $adres, $postcodeID, $gemeente,$statusID){

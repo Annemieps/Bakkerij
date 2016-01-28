@@ -23,12 +23,18 @@
             <section>
                 <h2>Maak een account aan.</h2>
                 <small>Een ultra geheim wachtwoord zal voor u gegenereerd worden</small><br><br>
-                
+
                 <form class="form-horizontal" role="form" method="post" action="voegKlantToe.php?action=toevoegen">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="email">Email:</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control" name="email" placeholder="Enter email">
+                            <input type="email" class="form-control" name="email" placeholder="Enter email"> <?php
+                            if (isset($_GET['error']) && $_GET['error'] == "emailBestaatAl") {
+                                ?>
+                                <p style="color: red">Dit email adres is al in gebruik. Gebruik een uniek email adres.</p>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="form-group">
@@ -67,15 +73,9 @@
                         </div>
                     </div>
                 </form>
-                 <?php
-                        if (isset($_GET['error']) && $_GET['error'] == "klantbestaat al") {
-                            ?>
-                            <p style="color: red">Dit email adres is al in gebruik.</p>
-                            <?php
-                        }
-                        ?>
+
             </section>
-             
+
         </div>
 
     </body>
