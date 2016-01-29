@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-         <link href="css/bootstrap.min.css" rel="stylesheet">
-         <link href="css/css.css" rel="stylesheet" type="text/css">
+         <link href="presentation/css/bootstrap.min.css" rel="stylesheet">
+         <link href="presentation/css/css.css" rel="stylesheet" type="text/css">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -16,6 +16,24 @@
         <![endif]-->
         <title>Bakkerij Bobba Bread</title>
     </head>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bobba Brett</a>
+            
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="indexController.php">Home</a></li>
+            <li> <a href="loginController.php">Login</a> </li>
+            <li> <a href="productenlijstController.php">Bestellen</a> </li>
+            <li> <a href="#">Account overzicht</a> </li>
+          </ul>
+           
+        </div>
+    </nav>
+       
+       
+        
+       
+    
     <body>
         <div class="container">
             <header><h1>Bakkerij Bobba Breatt <br><small>Our bread is out of this world</small></h1></header>
@@ -41,9 +59,22 @@
             </section>
             <section>
                 <h2>Onze Producten</h2>
+                <table class="table">
+                        <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Prijs</th>
+                                </tr>
+                        </thead>
                  <?php
-                // put your code here
-                ?>
+                        foreach ($productenLijst as $product) {
+                            ?><tr class="row">
+                                <td class="col-lg-6"><?php echo $product->getProductnaam() . "</td>"
+                           . "  <td class='col-lg-6'>" . $product->getProductprijs() .       "€ </td>  "
+                             . "</tr>";
+                        }
+                        ?>
+                </table>
             </section>    
         </div>
        

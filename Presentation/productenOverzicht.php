@@ -17,46 +17,26 @@
         <title>Bakkerij Bobba Bread Producten Overzicht</title>
     </head>
     <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+            <a class="navbar-brand" href="#">Bobba Brett</a>
+            
+          <ul class="nav navbar-nav">
+            <li><a href="indexController.php">Home</a></li>
+            <li> <a href="loginController.php">Login</a> </li>
+            <li class="active"> <a href="productenlijstController.php">Bestellen</a> </li>
+            <li> <a href="#">Account overzicht</a> </li>
+          </ul>
+           
+        </div>
+    </nav>
+        <div class="container">
+            
             <header><h1>Bakkerij Bobba Breatt <br><small>Our bread is out of this world</small></h1></header>
-            <section>
-                <article>
-                    <h3>Login</h3>
-                    <form action="" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="gebruikersnaam">Gebruikersnaam:</label>
-                            <div class="col-sm-4"> 
-                                <input type="text" class="form-control" id="gebruikersnaam" placeholder="Gebruikersnaam">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="wachtwoord">Wachtwoord:</label>
-                            <div class="col-sm-4"> 
-                                <input type="password" class="form-control" id="wachtwoord" placeholder="wachtwoord">
-                            </div>
-                        </div>
-                        <div class="form-group"> 
-                            <div class="col-sm-offset-2 col-sm-4">
-                                <button type="submit" class="btn btn-primary">log in</button>     
-
-
-                            </div>
-                        </div>
-                        <a href="#">Maak een nieuwe account aan</a>
-
-                    </form>
-
-
-                </article>
-                <article>
-                    <h3>Hallo Jef</h3>
-                    <a href="#">Bekijk al uw bestellingen</a>
-
-                </article>
-            </section>
+            
             <section>
                 <h2>Onze Producten</h2>
-                <form method="post" action="addToOrder">
+                <form method="post" action="orderController.php">
                     <table class="table">
                         <thead>
                             <tr>

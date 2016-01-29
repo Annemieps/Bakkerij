@@ -9,6 +9,7 @@
     margin: 1em 0 1em 1em;
 }
 header{
+    margin-top:6%;
     margin-bottom:7%;
     border-bottom:7px solid #d58512;
 }
@@ -19,4 +20,8 @@ header{
 }
 .btn-primary:hover{
     background:#8a6d3b;
+}
+#newaccount{
+    margin-top:2em;
+    font-size:1.4em;
 }

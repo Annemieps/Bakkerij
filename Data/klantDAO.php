@@ -7,6 +7,7 @@ require_once 'DBConfig.php';
 
 class klantDAO {
 
+    //Om te controleren bij het aanmaken van een account of een account bestaat, returned een 0 of een 1
     public function getByEmail($email) {
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $sql = "select * from klant where emailadres =  :email";
@@ -14,11 +15,10 @@ class klantDAO {
         $stmt->execute(array(':email' => $email));
         $result = $stmt->rowCount();
         $dba = null;
-
-       
         return $result;
     }
 
+    //effectief aanmaken van de account
     public function createUser($email, $wachtwoord, $voornaam, $familienaam, $adres, $postcodeID, $gemeente, $statusID) {
 
         $bestaandeUser = $this->getByEmail($email);
@@ -45,6 +45,20 @@ class klantDAO {
 
             $dba = null;
         }
+    }
+
+    //Om bij inloggen te checken of de informatie klopt
+    public function checkLogin($email) {
+        $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        $sql = "select emailadres,wachtwoord, familienaam  from klant where emailadres =  :email";
+        $stmt = $dba->prepare($sql);
+        $stmt->execute(array(':email' => $email));
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+        
+        $user = ['emailadres'=>$result["emailadres"], 'wachtwoord'=>$result["wachtwoord"], 'familienaam'=>$result["familienaam"]];
+        $dba = null;
+        
+        return $user;
     }
 
 }
