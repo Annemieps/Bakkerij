@@ -21,6 +21,7 @@ class klantDAO {
     //effectief aanmaken van de account
     public function createUser($email, $wachtwoord, $voornaam, $familienaam, $adres, $postcodeID, $gemeente, $statusID) {
 
+        //var_dump( "createuser", $email, $wachtwoord, $voornaam, $familienaam, $adres, $postcodeID, $gemeente, $statusID); 
         $bestaandeUser = $this->getByEmail($email);
         if ($bestaandeUser != 0) {
             throw new emailBestaatAlException();
@@ -40,7 +41,6 @@ class klantDAO {
             $stmt->bindParam(":gemeente", $gemeente);
             $stmt->bindParam(":statusID", $statusID);
             $stmt->execute();
-
             //$stmt->execute(array(':email' => $email, ':wachtwoord' => $wachtwoord, ':voornaam' => $voornaam, ':familienaam' => $familienaam,':adres' => $adres , ':postcodeID' =>  $postcodeID , ':gemeente' => $gemeente , ':statusID' => $statusID ));
 
             $dba = null;
@@ -57,7 +57,6 @@ class klantDAO {
         
         $user = ['emailadres'=>$result["emailadres"], 'wachtwoord'=>$result["wachtwoord"], 'familienaam'=>$result["familienaam"]];
         $dba = null;
-        
         return $user;
     }
 

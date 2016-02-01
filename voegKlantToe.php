@@ -16,9 +16,9 @@ if (isset($_GET["action"]) && $_GET["action"] == "toevoegen") {
                     //$_POST["gemeente"] = preg_replace("/[^A-Z]+/", "", $_POST["gemeente"]);
                     
                     
-                    $wachtwoord = new KlantService();
-                    $wachtwoord = $wachtwoord->safety();
                     $klantService = new KlantService();
+                    $wachtwoord = $klantService->safety();
+                    //$klantService = new KlantService();
                     $klantService->maakKlant($_POST['email'], $wachtwoord, $_POST['voornaam'], $_POST['familienaam'], $_POST['adres'], $_POST['postcode'], $_POST['gemeente'], 1);
                     header("location: voegklanttoe.php?action=gelukt");
                     exit(0);    

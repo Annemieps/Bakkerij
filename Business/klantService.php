@@ -44,16 +44,17 @@ class KlantService {
             $hashedvalue = sha1("batman" . $wachtwoord);
             $hash1=strrev($hashedvalue);
             $hash2 = sha1($hash1);
-            if ($hash2 == $wachtwoord) {
+            var_dump($hash2);
+            var_dump($klant);
+            if ($hash2 == $klant["wachtwoord"]) {
                 $login="juist";
                 return $login;
             }
             $login="emailJwachtwoordF";
             return $login;
-        } 
+        }
             $login="fout";
             return $login;
-        
     }
 
     public function adminpw() {

@@ -34,7 +34,7 @@
             <section>
                 <article>
                     <h3>Login</h3>
-                    <form action="login.php?action=login" class="form-horizontal" method="post">
+                    <form action="loginController.php?action=login" class="form-horizontal" method="post">
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="email">Email:</label>
                             <div class="col-sm-4"> 
