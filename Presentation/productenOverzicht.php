@@ -18,43 +18,47 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Bobba Brett</a>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="indexController.php">Home</a></li>
+                    <li> <a href="loginController.php">Login</a> </li>
+                    <li class="active"> <a href="productenlijstController.php">Bestellen</a> </li>
+                    <li> <a href="#">Account overzicht</a> </li>
+                </ul>
+
+            </div>
+        </nav>
         <div class="container">
-            <a class="navbar-brand" href="#">Bobba Brett</a>
-            
-          <ul class="nav navbar-nav">
-            <li><a href="indexController.php">Home</a></li>
-            <li> <a href="loginController.php">Login</a> </li>
-            <li class="active"> <a href="productenlijstController.php">Bestellen</a> </li>
-            <li> <a href="#">Account overzicht</a> </li>
-          </ul>
-           
-        </div>
-    </nav>
-        <div class="container">
-            
+
             <header><h1>Bakkerij Bobba Breatt <br><small>Our bread is out of this world</small></h1></header>
-            
+
             <section>
                 <h2>Onze Producten</h2>
-                <form method="post" action="orderController.php">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Product</th>
-                                <th>Prijs</th>
-                                <th>Hoeveelheid</th>
-                            </tr>
-                        </thead>
-                        <?php
-                        foreach ($productenLijst as $product) {
-                            ?><tr class="row"><td class="col-lg-4"><?php
-                            echo $product->getProductnaam() . "</td>  <td class='col-lg-4'>" . $product->getProductprijs() . "€ </td> <td class='col-lg-4'><input type='text'></input> <input type='submit' class='btn btn-primary' value='Bestel'></td> <br>";
-                        }
-                        ?>
-                    </table>
-                    <input type="submit" value="bestel" class="btn btn-primary">
-                </form>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Product</th>
+                            <th>Prijs</th>
+                            <th>Hoeveelheid</th>
+                        </tr>
+                    </thead>
+
+                    <?php
+                    foreach ($productenLijst as $product) {
+                        ?><tr class="row"><td class="col-lg-4"><?php
+                                echo $product->getProductnaam() . "</td>  <td class='col-lg-4'>" . $product->getProductprijs() . "€ </td> <td class='col-lg-4'>"
+                                . "<form action='productenlijstController.php?product=" . $product->getProductID() . " 'method='post'>"
+                                . "<input type='number' name='hoeveelheid'></input> <input type='submit' value='submit' class='btn btn-primary'></input>"
+                                        . "</form></td> <br>";
+                            }
+                            ?>
+                </table>
+
+
             </section>    
         </div>
 

@@ -53,7 +53,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Email:</label>
                     <div class="col-sm-6">
-                        <input type="email" class="form-control" name="email" placeholder="Enter email"> <?php
+                        <input type="email" class="form-control" name="email" placeholder="Enter email" required> <?php
             if (isset($_GET['error']) && $_GET['error'] == "emailBestaatAl") {
                 ?>
                             <div class="alert alert-danger" role="alert">
@@ -69,31 +69,31 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="voornaam">Voornaam:</label>
                     <div class="col-sm-6"> 
-                        <input type="text" class="form-control" name="voornaam" placeholder="Voornaam">
+                        <input type="text" class="form-control" name="voornaam" placeholder="Voornaam" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="familienaam">Familienaam:</label>
                     <div class="col-sm-6"> 
-                        <input type="text" class="form-control" name="familienaam" placeholder="Familienaam">
+                        <input type="text" class="form-control" name="familienaam" placeholder="Familienaam" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="adres">Adres:</label>
                     <div class="col-sm-6"> 
-                        <input type="text" class="form-control" name="adres" placeholder="Adress">
+                        <input type="text" class="form-control" name="adres" placeholder="Adress" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="postcode">Postcode:</label>
                     <div class="col-sm-6"> 
-                        <input type="text" class="form-control" name="postcode" placeholder="Postcode">
+                        <input type="text" class="form-control" name="postcode" placeholder="Postcode" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="gemeente">Gemeente:</label>
                     <div class="col-sm-6"> 
-                        <input type="text" class="form-control" name="gemeente" placeholder="gemeente">
+                        <input type="text" class="form-control" name="gemeente" placeholder="gemeente" required>
                     </div>
                 </div>
                 <div class="form-group"> 

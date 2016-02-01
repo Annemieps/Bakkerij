@@ -1,6 +1,7 @@
 <?php
 
-class Klant{
+class Klant {
+
     private $email;
     private $wachtwoord;
     private $familienaam;
@@ -9,7 +10,7 @@ class Klant{
     private $postcodeID;
     private $gemeente;
     private $statusID;
-    
+
     function __construct($email, $wachtwoord, $familienaam, $voornaam, $adres, $postcodeID, $gemeente, $statusID) {
         $this->email = $email;
         $this->wachtwoord = $wachtwoord;
@@ -17,9 +18,10 @@ class Klant{
         $this->voornaam = $voornaam;
         $this->adres = $adres;
         $this->postcodeID = $postcodeID;
-        $this->gemeente=$gemeente;
+        $this->gemeente = $gemeente;
         $this->statusID = $statusID;
     }
+
     function getGemeente() {
         return $this->gemeente;
     }
@@ -28,7 +30,7 @@ class Klant{
         $this->gemeente = $gemeente;
     }
 
-        function getEmail() {
+    function getEmail() {
         return $this->email;
     }
 
@@ -83,6 +85,5 @@ class Klant{
     function setStatusID($statusID) {
         $this->statusID = $statusID;
     }
-
 
 }
