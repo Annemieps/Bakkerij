@@ -26,8 +26,7 @@ if ($_SESSION['gebruiker'] != "ingelogd") {
 if (isset($_GET['product'])) {
     //dan word er in een array winkelmandje het productid gestopt en de hoeveelheid
     $_SESSION['winkelmandje'][] = array("BestellingsID" => $laatstebestellingsID+1,"productID" => $_GET['product'], "hoeveelheid" => $_POST['hoeveelheid']);
-    //dit winkelmandje word in een sessie gestopt
-    //$_SESSION['winkelmandje'] = $winkelmand;
+   
 
     var_dump($_SESSION['winkelmandje']);
 }

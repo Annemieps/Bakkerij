@@ -61,7 +61,7 @@
                 <h2>Onze Producten</h2>
                 <table class="table">
                         <thead>
-                                <tr>
+                                <tr class="row">
                                     <th>Product</th>
                                     <th>Prijs</th>
                                 </tr>
@@ -77,6 +77,6 @@
                 </table>
             </section>    
         </div>
-       
+       <footer></footer>
     </body>
 </html>

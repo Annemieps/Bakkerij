@@ -22,12 +22,13 @@ class productDAO {
 
     public function getByID($productID){
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
-        $sql= "select productprijs where productID= :productid";
+        $sql= "select productprijs,productnaam from producten where productID= :productid";
         $stmt = $dba->prepare($sql);
         $stmt->bindParam(":productid", $productID);
         $stmt->execute();
-        $productprijs= $stmt->fetch();
-        
+        $productprijs= $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($productprijs);
+        $dba=null;
         return $productprijs;
     }
 }

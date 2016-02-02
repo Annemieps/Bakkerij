@@ -40,11 +40,11 @@
             <?php
             if (isset($_GET['action']) && $_GET['action'] == "gelukt") {
                 ?>
-            <div class="alert bg-success" role="alert">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                <span class="sr-only">Yay:</span>
-                Proficiat, u bent geregistreerd! 
-            </div>
+                <div class="alert bg-success" role="alert">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <span class="sr-only">Yay:</span>
+                    Proficiat, u bent geregistreerd! 
+                </div>
                 <?php
             }
             ?>
@@ -54,13 +54,13 @@
                     <label class="control-label col-sm-2" for="email">Email:</label>
                     <div class="col-sm-6">
                         <input type="email" class="form-control" name="email" placeholder="Enter email" required> <?php
-            if (isset($_GET['error']) && $_GET['error'] == "emailBestaatAl") {
-                ?>
+                        if (isset($_GET['error']) && $_GET['error'] == "emailBestaatAl") {
+                            ?>
                             <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span>
-                Dit email adres is al in gebruik. 
-            </div>
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                Dit email adres is al in gebruik. 
+                            </div>
                             <?php
                         }
                         ?>
@@ -106,6 +106,7 @@
         </section>
 
     </div>
-
+    <footer></footer>
 </body>
+
 </html>

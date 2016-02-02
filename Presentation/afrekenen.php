@@ -43,7 +43,7 @@
 
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr class="row">
                             <th>Product</th>
                             <th>Hoeveelheid</th>
                             <th>Prijs p/s</th>
@@ -52,33 +52,33 @@
                     </thead>
                     <tbody>
                         <?php
-                        
-                    foreach ($_SESSION["winkelmandje"] as $product) {
-                        ?><tr class="row"><td class="col-lg-3"><?php
-                                echo $product["productID"] . "</td>  "
-                                        . "<td class='col-lg-3'>" . $product["hoeveelheid"] . "</td> "
-                                        . "<td class='col-lg-3'>" . "" . 
-                                "<td>6.5€</td>"
-                                        . "</form></tr> <br>";
-                            }
-                            ?>
-                                
-<!--                        <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>
-                        <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>
-                        <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>
-                        <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>-->
-                        <tr><td colspan="3" class="text-right"><b>Totaal</b></td><td>26€</td></tr>
+                        foreach ($prijs as $product) {
+
+                            echo "<tr class='row'>"
+                            . "<td class='col-lg-3'>" . $product['productnaam'] . "</td>"
+                            . "<td class='col-lg-3'>" . $product["hoeveelheid"] . "</td> "
+                            . "<td class='col-lg-3'>" . $product['productprijs'] . "</td>"
+                            . "<td class='col-lg-3'>" . $product["hoeveelheid"] * $product['productprijs'] . "</td>"
+                            . "</tr>";
+
+                            $tussentotaal = $product["hoeveelheid"] * $product['productprijs'];
+                            $totaal = $totaal + $tussentotaal;
+                        }
+                        ?>
+
+
+                        <tr><td colspan="3" class="text-right"><b>Totaal</b></td><td><?php echo $totaal; ?> €</td></tr>
                     </tbody>
 
                 </table>  
-                <form action="" method="post">
+                <form action="afrekenController?betalen=true" method="post">
                     <div class="form-group">
                         <b>Voor welke dag is uw bestelling?</b>
                         <br>
                         <select>
-                            <option>Morgen 2/2/2016</option>
-                            <option>Woensdag 3/2/2016</option>
-                            <option>Donderdag 4/2/2016</option>
+                            <option value="morgen"><?php echo date('j') + 1 . " " . date('F') . " " . date('Y'); ?></option>
+                            <option value="overmorgen"><?php echo date('j') + 2 . " " . date('F') . " " . date('Y'); ?></option>
+                            <option value="3dagen"><?php echo date('j') + 3 . " " . date('F') . " " . date('Y'); ?></option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -88,5 +88,6 @@
                 </form>
             </section>
         </div>
+        <footer></footer>
     </body>
 </html>

@@ -52,7 +52,7 @@
                         ?><tr class="row"><td class="col-lg-4"><?php
                                 echo $product->getProductnaam() . "</td>  <td class='col-lg-4'>" . $product->getProductprijs() . "€ </td> <td class='col-lg-4'>"
                                 . "<form action='productenlijstController.php?product=" . $product->getProductID() . " 'method='post'>"
-                                . "<input type='number' name='hoeveelheid'></input> <input type='submit' value='submit' class='btn btn-primary'></input>"
+                                . "<input type='number' name='hoeveelheid' required></input> <input type='submit' value='submit' class='btn btn-primary'></input>"
                                         . "</form></td> <br>";
                             }
                             ?>

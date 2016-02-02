@@ -68,9 +68,8 @@
                         Het ingegeven wachtwoord is niet juist. 
                     </div>
                     <?php
-                }
-                elseif(isset($_GET['error']) && $_GET['error'] == "failed"){
-                     ?>
+                } elseif (isset($_GET['error']) && $_GET['error'] == "failed") {
+                    ?>
                     <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span>
@@ -81,5 +80,6 @@
                 ?>
 
             </article>
+            <footer></footer>
             </body>
             </html>
