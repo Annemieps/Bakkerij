@@ -51,10 +51,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        
+                    foreach ($_SESSION["winkelmandje"] as $product) {
+                        ?><tr class="row"><td class="col-lg-3"><?php
+                                echo $product["productID"] . "</td>  "
+                                        . "<td class='col-lg-3'>" . $product["hoeveelheid"] . "</td> "
+                                        . "<td class='col-lg-3'>" . "" . 
+                                "<td>6.5€</td>"
+                                        . "</form></tr> <br>";
+                            }
+                            ?>
+                                
+<!--                        <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>
                         <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>
                         <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>
-                        <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>
-                        <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>
+                        <tr><td>éclair</td><td>5</td><td>1.3€</td><td>6.5€</td></tr>-->
                         <tr><td colspan="3" class="text-right"><b>Totaal</b></td><td>26€</td></tr>
                     </tbody>
 

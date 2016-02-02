@@ -57,7 +57,8 @@
                             }
                             ?>
                 </table>
-
+                <a href="afrekenController.php" class="btn btn-primary">Afrekenen</a>
+                
 
             </section>    
         </div>

@@ -9,4 +9,10 @@ class productService{
         $productenLijst=$productenDAO->getAllProducts();
         return $productenLijst;
     }
+    
+    public function getPrijs($productID){
+        $productenDAO=new productDAO();
+        $prijs=$productenDAO->getByID($productID);
+        return $prijs;
+    }
 }
