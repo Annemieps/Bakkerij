@@ -41,13 +41,15 @@ if (isset($_GET['betalen']) && $_GET["betalen"] = true) {
         
         //als er geen rijen terug komen voor die user op die datum dan mag er besteld worden
         if ($alEenBestelling == null) {
+            //post is leeg, waar is post? var dumpen! 
             $bestellingService->insertBestelling($_SESSION["user"], date("j-n-Y",strtotime($_POST["bestellingsdatum"])));
+            $_SESSION["help"]= date("j-n-Y",strtotime($_POST["bestellingsdatum"]));
             
             //alle lijnen afloopen van het order
             for ($i = 0; $i < count($_SESSION["winkelmandje"]); $i++) {
-               
+               //$_SESSION["winkelmandje"][$i]["BestellingsID"]
                 $bestellinglijnService->insertLijnen($_SESSION["winkelmandje"][$i]["BestellingsID"],$_SESSION["winkelmandje"][$i]["productID"], $_SESSION["winkelmandje"][$i]["hoeveelheid"]);
-                echo 'HELP';
+                
             }
                 
                 //als er toestemming is, als de datum juist is, als er nog geen bestelling is voor die datum, als de bestelling en de bestellingslijnen in de databank zitten

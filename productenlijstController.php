@@ -11,7 +11,7 @@ $productenLijst = $productenservice->getProductenOverview();
 //laatste bestellingsID ophalen voor in de sessie te stoppen met alle bestellingslijnen
 $bestellinglijnService = new bestellingLijnService;
 $laatstebestellingsID= $bestellinglijnService->getLaatsteLijn();
-
+echo $laatstebestellingsID;
 
 //als de user doorkomt van de login pagina dan word de sessie gebruiker als ingelogd gezet
 if (isset($_GET['action']) && $_GET['action'] = "succes") {
@@ -24,11 +24,12 @@ if ($_SESSION['gebruiker'] != "ingelogd") {
 
 //Als er een product toegevoegd is 
 if (isset($_GET['product'])) {
+    
     //dan word er in een array winkelmandje het productid gestopt en de hoeveelheid
-    $_SESSION['winkelmandje'][] = array("BestellingsID" => $laatstebestellingsID+1,"productID" => $_GET['product'], "hoeveelheid" => $_POST['hoeveelheid']);
+    $_SESSION['winkelmandje'][] = array("BestellingsID" => $laatstebestellingsID,"productID" => $_GET['product'], "hoeveelheid" => $_POST['hoeveelheid']);
    
 
-    var_dump($_SESSION['winkelmandje']);
+   
 }
 
 include './Presentation/productenOverzicht.php';

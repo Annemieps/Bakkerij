@@ -87,9 +87,8 @@
 
                 </form>
                 <?php
-               echo "<pre>";
-               var_dump($_SESSION);
-               echo "</pre>";
+               var_dump($_SESSION["help"]);
+               var_dump($_POST);
         
 //                ?>
             </section>

@@ -8,8 +8,8 @@ class bestellinglijnDAO{
     public function laatsteLijn(){
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $sql= "SELECT bestellingenID FROM bestellingen ORDER BY bestellingenID DESC LIMIT 1";
-        $stmt=$dba->prepare($sql);
-        $result= $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt=$dba->query($sql);
+        $result= $stmt->fetch(PDO::FETCH_COLUMN);
         $dba=null;
         return $result;
         
