@@ -71,14 +71,14 @@
                     </tbody>
 
                 </table>  
-                <form action="afrekenController?betalen=true" method="post">
+                <form action="afrekenController.php?betalen=true" method="post">
                     <div class="form-group">
                         <b>Voor welke dag is uw bestelling?</b>
                         <br>
-                        <select>
-                            <option value="morgen"><?php echo date('j') + 1 . " " . date('F') . " " . date('Y'); ?></option>
-                            <option value="overmorgen"><?php echo date('j') + 2 . " " . date('F') . " " . date('Y'); ?></option>
-                            <option value="3dagen"><?php echo date('j') + 3 . " " . date('F') . " " . date('Y'); ?></option>
+                        <select name="bestellingsdatum">
+                            <option value="<?php echo date('j F Y',strtotime('now +1 day')) ?>"><?php echo date('j') + 1 . " " . date('F') . " " . date('Y'); ?></option>
+                            <option value="<?php echo date('j F Y',strtotime('now +2 day')) ?>"><?php echo date('j') + 2 . " " . date('F') . " " . date('Y'); ?></option>
+                            <option value="<?php echo date('j F Y',strtotime('now +3 day')) ?>"><?php echo date('j') + 3 . " " . date('F') . " " . date('Y'); ?></option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -86,6 +86,12 @@
                     </div>
 
                 </form>
+                <?php
+               echo "<pre>";
+               var_dump($_SESSION);
+               echo "</pre>";
+        
+//                ?>
             </section>
         </div>
         <footer></footer>

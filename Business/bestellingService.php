@@ -1,0 +1,15 @@
+<?php
+require_once 'Data/bestellingDAO.php';
+
+class bestellingService{
+    public function insertBestelling($klantID,$dag){
+        $bestellingDAO=new bestellingDAO();
+        $bestellingDAO->insertBestelling($klantID, $dag);
+        
+    }
+    public function alEenBestelling($klantID,$dag){
+        $bestellingDAO=new bestellingDAO();
+        $bestellingDAO->alEenBestelling($klantID, $dag);
+    }
+}
+

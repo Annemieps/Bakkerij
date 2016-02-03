@@ -6,6 +6,7 @@ require_once 'DBConfig.php';
 
 class productDAO {
 
+        //lijst producten voor home pagina en bestel pagina.
     public function getAllProducts() {
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $sql = 'select * from producten';
@@ -20,6 +21,7 @@ class productDAO {
         return $productenlijst;
     }
 
+        // productnaam en prijs ophalen bij id voor in afreken overzicht. 
     public function getByID($productID){
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $sql= "select productprijs,productnaam from producten where productID= :productid";
@@ -27,7 +29,6 @@ class productDAO {
         $stmt->bindParam(":productid", $productID);
         $stmt->execute();
         $productprijs= $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //var_dump($productprijs);
         $dba=null;
         return $productprijs;
     }

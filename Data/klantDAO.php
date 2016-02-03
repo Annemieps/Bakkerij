@@ -59,5 +59,16 @@ class klantDAO {
         $dba = null;
         return $user;
     }
-
+    
+    //om bij het afrekenen te checken of de status het toe staat op te bestellen.
+    public function checkStatus($email) {
+        $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
+        $sql = "select statusID  from klant where emailadres =  :email";
+        $stmt = $dba->prepare($sql);
+        $stmt->execute(array(':email' => $email));
+        $result=$stmt->fetch();
+        return $result;
+    }
+    
+    
 }

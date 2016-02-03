@@ -8,4 +8,9 @@ class bestellingLijnService{
         $laatstelijn=$bestellinglijnDAO->laatsteLijn();
         return $laatstelijn;
     }
+
+    public function insertLijnen($bestellingenID,$productID,$hoeveelheid){
+        $bestellinglijnDAO=new bestellinglijnDAO();
+        $bestellinglijnDAO->insertLijnen($bestellingenID, $productID, $hoeveelheid);
+    }
 }
