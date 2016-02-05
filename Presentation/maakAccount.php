@@ -64,6 +64,17 @@
                             <?php
                         }
                         ?>
+                        <?php
+                        if (isset($_GET['error']) && $_GET['error'] == "email") {
+                            ?>
+                            <div class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                Geen geldig email adres. 
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="form-group">

@@ -8,23 +8,22 @@ require_once './exceptions/emailBestaatAlException.php';
 if (isset($_GET["action"]) && $_GET["action"] == "toevoegen") {
 
     try {
-//        if (filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL)) {
-//            if (filter_input(INPUT_POST, "adres", FILTER_SANITIZE_STRING)) {
-//                if (filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_NUMBER_INT)) {
-                   // $_POST["voornaam"] = preg_replace("/[^A-Z]+/", "", $_POST["voornaam"]);
-                    //$_POST["familienaam"] = preg_replace("/[^A-Z]+/", "", $_POST["familienaam"]);
-                    //$_POST["gemeente"] = preg_replace("/[^A-Z]+/", "", $_POST["gemeente"]);
+//        if (filter_var(INPUT_POST, "email", FILTER_SANITIZE_EMAIL)) {
+//            if (filter_var(INPUT_POST, "adres", FILTER_SANITIZE_STRING)) {
+//                if (filter_var(INPUT_POST, "postcode", FILTER_SANITIZE_NUMBER_INT)) {
+//                    $voornaam = preg_replace("/[^A-Z]+/", "", $_POST["voornaam"]);
+//                    $familienaam = preg_replace("/[^A-Z]+/", "", $_POST["familienaam"]);
+//                    $gemeente = preg_replace("/[^A-Z]+/", "", $_POST["gemeente"]);
                     
                     
                     $klantService = new KlantService();
                     $wachtwoord = $klantService->safety();
-                    //$klantService = new KlantService();
-                    $klantService->maakKlant($_POST['email'], $wachtwoord, $_POST['voornaam'], $_POST['familienaam'], $_POST['adres'], $_POST['postcode'], $_POST['gemeente'], 1);
+                    $klantService->maakKlant($_POST['email'], $wachtwoord, $voornaam, $familienaam, $_POST['adres'], $_POST['postcode'], $gemeente, 1);
                     header("location: voegklanttoe.php?action=gelukt");
                     exit(0);    
                     
-                    //header("location: productenlijstController.php");
-                    //exit(0);
+//                    header("location: productenlijstController.php");
+//                    exit(0);
 //                }
 //                header("location: voegKlantToe.php?error=postcode");
 //                exit(0);

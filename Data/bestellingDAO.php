@@ -40,11 +40,14 @@ class bestellingDAO {
 
         return $result;
     }
-    
-    public function verwijderBestelling($bestellingsID){
+
+    public function verwijderBestelling($bestellingenID) {
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
-        $sql= "Delete from bestellingen where bestellingenID = :bestellingenID";
-        
+        $sql = "Delete from bestellingen where bestellingenID = :bestellingenID";
+        $stmt = $dba->prepare($sql);
+        $stmt->bindParam(":bestellingenID", $bestellingenID);
+        $stmt->execute();
+        $dba = null;
     }
 
 }

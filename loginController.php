@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once './Business/klantService.php';
 //voor het woord admin te veranderen in een hash. Puur voor login account
 //$klantenService = new KlantService();

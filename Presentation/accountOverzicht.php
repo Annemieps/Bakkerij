@@ -70,7 +70,7 @@
                                 "<td class='col-lg-3'>".$bestelling['bestellingenID'] . "</td>". 
                                 "<td class='col-lg-3'>". $bestelling['klantID']. "</td>".
                                 "<td class='col-lg-3'>".        date("j-m-Y",$bestelling["dag"]) ."</td>".
-                                "<td class='col-lg-3'> <form action='accountoverzicht.php?verwijder=".$bestelling['bestellingenID']."'><input type='submit' value='Verwijder bestelling' class='btn btn-primary'> </form></td>".
+                                "<td class='col-lg-3'> <a href='accountOverzichtController.php?verwijder=".$bestelling['bestellingenID']."' class='btn btn-primary''>Verwijder</a></td>".
                                 "</tr>";
                             }
                             ?>

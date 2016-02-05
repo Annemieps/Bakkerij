@@ -16,5 +16,9 @@ class bestellingService{
         return $bestellingDAO->getBestelling($klantID);
         
     }
+    public function verwijderBestelling($bestellingenID){
+        $bestellingDAO=new bestellingDAO();
+        $bestellingDAO->verwijderBestelling($bestellingenID);
+    }
 }
 
