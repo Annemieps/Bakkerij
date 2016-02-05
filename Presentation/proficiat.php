@@ -21,18 +21,24 @@
             <a class="navbar-brand" href="#">Bobba Brett</a>
 
             <ul class="nav navbar-nav">
-                <li><a href="indexController.php">Home</a></li>
-                <li  class="active"> <a href="loginController.php">Login</a> </li>
+                <li class="active"><a href="indexController.php">Home</a></li>
+                <li> <a href="loginController.php">Login</a> </li>
                 <li> <a href="productenlijstController.php">Bestellen</a> </li>
                 <li> <a href="#">Account overzicht</a> </li>
             </ul>
 
         </div>
     </nav>
-    <div class="container">
-        <header><h1>Bakkerij Bobba Breatt <br><small>Our bread is out of this world</small></h1></header>
-        <section>
-            <article>
+
+
+
+
+
+    <body>
+        <div class="container">
+            <header><h1>Bakkerij Bobba Breatt <br><small>Our bread is out of this world</small></h1></header>
+
+            <section>
                 <h2>Bestelling gelukt</h2>
                 
 

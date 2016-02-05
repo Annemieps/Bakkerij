@@ -76,9 +76,10 @@
                         <b>Voor welke dag is uw bestelling?</b>
                         <br>
                         <select name="bestellingsdatum">
-                            <option value="<?php echo date('j F Y',strtotime('now +1 day')) ?>"><?php echo date('j') + 1 . " " . date('F') . " " . date('Y'); ?></option>
-                            <option value="<?php echo date('j F Y',strtotime('now +2 day')) ?>"><?php echo date('j') + 2 . " " . date('F') . " " . date('Y'); ?></option>
-                            <option value="<?php echo date('j F Y',strtotime('now +3 day')) ?>"><?php echo date('j') + 3 . " " . date('F') . " " . date('Y'); ?></option>
+                            <!--<option value="<?php //echo date('j F Y',strtotime('now +1 day')) ?>"><?php //echo date('j') + 1 . " " . date('F') . " " . date('Y'); ?></option>-->
+                            <option value="<?php echo strtotime('+1 day') ?>"><?php echo date ("j F Y",strtotime('+1 day')) ?></option>
+                            <option value="<?php echo strtotime('+2 day') ?>"><?php echo date ("j F Y",strtotime('+2 day')); ?></option>
+                            <option value="<?php echo strtotime('+3 day') ?>"><?php echo date ("j F Y",strtotime('+3 day')); ?></option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -87,8 +88,36 @@
 
                 </form>
                 <?php
-               var_dump($_SESSION["help"]);
-               var_dump($_POST);
+                if (isset($_GET["error"])){
+                    if($_GET["error"]="DatumBezet"){
+                        ?>
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                       Er is al een bestelling voor deze dag. U mag maar één bestelling per dag doen. 
+                    </div>
+                    <?php
+                    }
+                    if($_GET["error"]="DatumIncorrect"){
+                      ?>
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        De ingegeven datum is incorrect, dit is niet de ijstijd. 
+                    </div>
+                    <?php  
+                    }
+                    if($_GET["error"]="verboden"){
+                      ?>
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        U hebt geen toestemming om te bestellen.  
+                    </div>
+                    <?php  
+                    }
+                }
+               
         
 //                ?>
             </section>

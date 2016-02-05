@@ -5,11 +5,11 @@ require_once './Business/productenService.php';
 require_once './Business/bestellinglijnService.php';
 
 //lijst producten om uit te loopen
-$productenservice = new productService;
+$productenservice = new productService();
 $productenLijst = $productenservice->getProductenOverview();
 
 //laatste bestellingsID ophalen voor in de sessie te stoppen met alle bestellingslijnen
-$bestellinglijnService = new bestellingLijnService;
+$bestellinglijnService = new bestellingLijnService();
 $laatstebestellingsID= $bestellinglijnService->getLaatsteLijn();
 echo $laatstebestellingsID;
 
@@ -26,7 +26,7 @@ if ($_SESSION['gebruiker'] != "ingelogd") {
 if (isset($_GET['product'])) {
     
     //dan word er in een array winkelmandje het productid gestopt en de hoeveelheid
-    $_SESSION['winkelmandje'][] = array("BestellingsID" => $laatstebestellingsID,"productID" => $_GET['product'], "hoeveelheid" => $_POST['hoeveelheid']);
+    $_SESSION['winkelmandje'][] = array("BestellingsID" => $laatstebestellingsID+1,"productID" => $_GET['product'], "hoeveelheid" => $_POST['hoeveelheid']);
    
 
    

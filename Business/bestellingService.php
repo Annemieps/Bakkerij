@@ -11,5 +11,10 @@ class bestellingService{
         $bestellingDAO=new bestellingDAO();
         $bestellingDAO->alEenBestelling($klantID, $dag);
     }
+    public function getBestelling($klantID){
+        $bestellingDAO=new bestellingDAO();
+        return $bestellingDAO->getBestelling($klantID);
+        
+    }
 }
 

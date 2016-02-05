@@ -14,7 +14,7 @@ class bestellinglijnDAO{
         return $result;
         
     }
-    //$bestellingenID
+    
     public function insertLijnen($bestellingenID,$productID,$hoeveelheid){
         $dba = new PDO(DBConfig::$DB_CONNSTRING, DBConfig::$DB_USERNAME, DBConfig::$DB_PASSWORD);
         $sql = "insert into bestellinglijn (bestellingenID, productID,hoeveelheid) VALUES(:bestellingenID, :productID,:hoeveelheid)";
