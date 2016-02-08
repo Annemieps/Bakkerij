@@ -6,14 +6,15 @@ class KlantService {
 
     //voor aanmaken user wachtwoord
     public function wachtwoord() {
-        //$code = array('1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
-        //$wachtwoordshuffle = shuffle($code);
-        //$wachtwoord=  implode($wachtwoordshuffle);
-        $wachtwoord = rand(100000, 999999);
-        return $wachtwoord;
+        $code = array('1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        shuffle($code);
+        $wachtwoord=  implode($code);
+        $verkort=  substr($wachtwoord, 1, 6);
+        return $verkort;
     }
 
     //voor veiligheid van het net aangemaakte wachtwoord, aan de hand van de gegevens van de net aangemaakte klant
+    //orgineel was de key een deel van de familienaam maar dit was ter test veranderd door Batman.
     public function safety() {
         $wachtwoord = $this->wachtwoord();
         $hashedvalue = sha1("batman" . $wachtwoord);

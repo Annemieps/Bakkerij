@@ -36,12 +36,12 @@ if ($_POST['bestellingsdatum'] > strtotime('now') && $_POST['bestellingsdatum'] 
         $bestellinglijnService = new bestellingLijnService();
         $bestellingService = new bestellingService();
 
-        //resultaat ophalen of er een bestelling bestaat of niet
+        //resultaat ophalen of er een bestelling bestaat of niet.
+        //probleem is dat er 
         $alEenBestelling = $bestellingService->alEenBestelling($_SESSION['user'], date("d-m-y",$_POST['bestellingsdatum']));
 
         //als er geen rijen terug komen voor die user op die datum dan mag er besteld worden
         if ($alEenBestelling == null) {
-            //post is leeg, waar is post? var dumpen! 
             $bestellingService->insertBestelling($_SESSION['user'], $_POST['bestellingsdatum']);
 
             

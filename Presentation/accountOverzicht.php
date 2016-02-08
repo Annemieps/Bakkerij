@@ -65,12 +65,15 @@
                         <tbody>
                  <?php
                     foreach ($bestellingLijst as $bestelling) {
-                            
+                                var_dump(strtotime(date("j-m-Y",$bestelling["dag"])));
                                 echo "<tr class='row'>".
                                 "<td class='col-lg-3'>".$bestelling['bestellingenID'] . "</td>". 
                                 "<td class='col-lg-3'>". $bestelling['klantID']. "</td>".
-                                "<td class='col-lg-3'>".        date("j-m-Y",$bestelling["dag"]) ."</td>".
-                                "<td class='col-lg-3'> <a href='accountOverzichtController.php?verwijder=".$bestelling['bestellingenID']."' class='btn btn-primary''>Verwijder</a></td>".
+                                "<td class='col-lg-3'>". date("j-m-Y",$bestelling["dag"]) ."</td>"."<td class='col-lg-3'>"; 
+                                        if (date("j-m-Y",$bestelling["dag"]) < date("j-m-Y",strtotime('now'))) { echo "Verleden";} 
+                                        elseif (date("j-m-Y",$bestelling["dag"]) == date("j-m-Y",strtotime('now +1 day'))) { echo "Cancelen onmogelijk"; } 
+                                        elseif (date("j-m-Y",$bestelling["dag"]) > date("j-m-Y",strtotime('now +1 day'))) { echo "<a href='accountOverzichtController.php?verwijder=" . $bestelling['bestellingenID']. "' class='btn btn-primary'>Verwijder</a></td>";}
+    
                                 "</tr>";
                             }
                             ?>
