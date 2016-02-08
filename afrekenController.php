@@ -7,7 +7,7 @@ require_once './Business/bestellinglijnService.php';
 require_once './Business/bestellingService.php';
 
 //als niet aangemeld doorsturen
-if ($_SESSION['gebruiker'] != "ingelogd" || !isset($_SESSION['winkelmandje']) || !isset($_SESSION)) {
+if (!isset($_SESSION['user']) || !isset($_SESSION['winkelmandje']) || !isset($_SESSION)) {
     header('location: loginController.php');
     exit(0);
 }
@@ -32,7 +32,7 @@ if (isset($_GET['betalen']) && $_GET['betalen'] = true) {
 
     //als de klant toestemming heeft word er gekeken naar de datum, als deze hoger is dan vandaag dan word er gesubmit naar de databank.
 if ($_POST['bestellingsdatum'] > strtotime('now') && $_POST['bestellingsdatum'] < strtotime('+3 day')) {
-        var_dump($_POST['bestellingsdatum']);
+    
         $bestellinglijnService = new bestellingLijnService();
         $bestellingService = new bestellingService();
 
@@ -44,7 +44,7 @@ if ($_POST['bestellingsdatum'] > strtotime('now') && $_POST['bestellingsdatum'] 
             //post is leeg, waar is post? var dumpen! 
             $bestellingService->insertBestelling($_SESSION['user'], $_POST['bestellingsdatum']);
 
-            var_dump($_SESSION['winkelmandje']);
+            
             //alle lijnen afloopen van het order
             for ($i = 0; $i < count($_SESSION['winkelmandje']); $i++) {
                 //$_SESSION["winkelmandje"][$i]["BestellingsID"]

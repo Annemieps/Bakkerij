@@ -18,16 +18,17 @@
     </head>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Bobba Brett</a>
-            
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="indexController.php">Home</a></li>
-            <li> <a href="loginController.php">Login</a> </li>
-            <li> <a href="productenlijstController.php">Bestellen</a> </li>
-            <li> <a href="#">Account overzicht</a> </li>
-          </ul>
-           
-        </div>
+                <a class="navbar-brand" href="indexController.php">Bobba Brett</a>
+
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="indexController.php">Home</a></li>
+                    <li> <a href="loginController.php">Login</a> </li>
+                    <li> <a href="productenlijstController.php">Bestellen</a> </li>
+                    <li> <a href="accountOverzichtController.php">Account overzicht</a> </li>
+                </ul>
+
+            </div>
+        
     </nav>
        
        

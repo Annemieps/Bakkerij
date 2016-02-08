@@ -18,14 +18,14 @@
     </head>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Bobba Brett</a>
+            <a class="navbar-brand" href="indexController.php">Bobba Brett</a>
 
-            <ul class="nav navbar-nav">
-                <li><a href="indexController.php">Home</a></li>
-                <li  class="active"> <a href="loginController.php">Login</a> </li>
-                <li> <a href="productenlijstController.php">Bestellen</a> </li>
-                <li> <a href="#">Account overzicht</a> </li>
-            </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="indexController.php">Home</a></li>
+                    <li class="active"> <a href="loginController.php">Login</a> </li>
+                    <li> <a href="productenlijstController.php">Bestellen</a> </li>
+                    <li> <a href="accountOverzichtController.php">Account overzicht</a> </li>
+                </ul>
 
         </div>
     </nav>
@@ -47,8 +47,19 @@
                 </div>
                 <?php
             }
+            if (isset($_GET['error']) && $_GET['error'] == "leeg") {
+                            ?>
+                            <div class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                De input van de velden is leeg 
+                            </div>
+            <?php
+            }
             ?>
-
+            
+             
+    
             <form class="form-horizontal" role="form" method="post" action="voegKlantToe.php?action=toevoegen">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Email:</label>
@@ -64,17 +75,7 @@
                             <?php
                         }
                         ?>
-                        <?php
-                        if (isset($_GET['error']) && $_GET['error'] == "email") {
-                            ?>
-                            <div class="alert alert-danger" role="alert">
-                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                <span class="sr-only">Error:</span>
-                                Geen geldig email adres. 
-                            </div>
-                            <?php
-                        }
-                        ?>
+                       
                     </div>
                 </div>
                 <div class="form-group">

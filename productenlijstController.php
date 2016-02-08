@@ -11,14 +11,14 @@ $productenLijst = $productenservice->getProductenOverview();
 //laatste bestellingsID ophalen voor in de sessie te stoppen met alle bestellingslijnen
 $bestellinglijnService = new bestellingLijnService();
 $laatstebestellingsID= $bestellinglijnService->getLaatsteLijn();
-echo $laatstebestellingsID;
+//echo $laatstebestellingsID;
 
 //als de user doorkomt van de login pagina dan word de sessie gebruiker als ingelogd gezet
 if (isset($_GET['action']) && $_GET['action'] = "succes") {
     $_SESSION['gebruiker'] = "ingelogd";
 }
 //als de user niet ingelogd is dan word die doorgestuurd naar de loginController
-if ($_SESSION['gebruiker'] != "ingelogd") {
+if (!isset($_SESSION['user'])) {
     header('location: loginController.php');
 }
 
