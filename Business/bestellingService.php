@@ -7,10 +7,10 @@ class bestellingService{
         $bestellingDAO->insertBestelling($klantID, $dag);
         
     }
-    public function alEenBestelling($klantID,$dag){
-        $bestellingDAO=new bestellingDAO();
-        $bestellingDAO->alEenBestelling($klantID, $dag);
-    }
+//    public function alEenBestelling($klantID,$dag){
+//        $bestellingDAO=new bestellingDAO();
+//        $bestellingDAO->alEenBestelling($klantID, $dag);
+//    }
     public function getBestelling($klantID){
         $bestellingDAO=new bestellingDAO();
         return $bestellingDAO->getBestelling($klantID);
@@ -20,5 +20,10 @@ class bestellingService{
         $bestellingDAO=new bestellingDAO();
         $bestellingDAO->verwijderBestelling($bestellingenID);
     }
+    
+   public function getDatum($klantID){
+        $bestellingDAO=new bestellingDAO();
+        return $bestellingDAO->getBestelling($klantID);
+   }
 }
 

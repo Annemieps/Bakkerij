@@ -50,18 +50,20 @@
                     <?php
                     foreach ($productenLijst as $product) {
                         ?><tr class="row"><td class="col-lg-4"><?php
-                                echo $product->getProductnaam() . "</td>  <td class='col-lg-4'>" . $product->getProductprijs() . "€ </td> <td class='col-lg-4'>"
-                                . "<form action='productenlijstController.php?product=" . $product->getProductID() . " 'method='post'>"
-                                . "<input type='number' name='hoeveelheid' required></input> <input type='submit' value='submit' class='btn btn-primary'></input>"
-                                        . "</form></td> <br>";
-                            }
-                            ?>
+                        echo $product->getProductnaam() . "</td>  <td class='col-lg-4'>" . $product->getProductprijs() . "€ </td> <td class='col-lg-4'>"
+                        . "<form action='productenlijstController.php?product=" . $product->getProductID() . " 'method='post'>"
+                        . "<input type='number' name='hoeveelheid' required></input> <input type='submit' value='submit' class='btn btn-primary'></input>"
+                        . "</form></td> <br>";
+                    }
+                    ?>
                 </table>
                 <a href="afrekenController.php" class="btn btn-primary">Afrekenen</a>
-                
+
 
             </section>    
         </div>
-
+        <footer>
+            <section class="container">Test Annemie Roelants</section>
+        </footer>
     </body>
 </html>

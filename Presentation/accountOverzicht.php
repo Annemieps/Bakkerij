@@ -18,16 +18,16 @@
     </head>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-                <a class="navbar-brand" href="indexController.php">Bobba Brett</a>
+            <a class="navbar-brand" href="indexController.php">Bobba Brett</a>
 
-                <ul class="nav navbar-nav">
-                    <li><a href="indexController.php">Home</a></li>
-                    <li> <a href="loginController.php">Login</a> </li>
-                    <li> <a href="productenlijstController.php">Bestellen</a> </li>
-                    <li class="active"> <a href="accountOverzichtController.php">Account overzicht</a> </li>
-                </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="indexController.php">Home</a></li>
+                <li> <a href="loginController.php">Login</a> </li>
+                <li> <a href="productenlijstController.php">Bestellen</a> </li>
+                <li class="active"> <a href="accountOverzichtController.php">Account overzicht</a> </li>
+            </ul>
 
-            </div>
+        </div>
     </nav>
 
 
@@ -39,50 +39,60 @@
             <header><h1>Bakkerij Bobba Breatt <br><small>Our bread is out of this world</small></h1></header>
 
             <section>
-                <?php 
-                if (isset($_GET['action']) && $_GET['proficiat']){
-                ?>
-                <div class="alert bg-success" role="alert">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    <span class="sr-only">Yay:</span>
-                    Proficiat, uw bestelling is gelukt.  
-                </div>
                 <?php
+                if (isset($_GET['action']) && $_GET['proficiat']) {
+                    ?>
+                    <div class="alert bg-success" role="alert">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        <span class="sr-only">Yay:</span>
+                        Proficiat, uw bestelling is gelukt.  
+                    </div>
+                    <?php
                 }
                 ?>
             </section>
             <section>
                 <h2>Account overzicht</h2>
                 <table class="table">
-                        <thead>
-                                <tr class="row">
-                                    <th>Bestellings ID</th>
-                                    <th>Gebruiker</th>
-                                    <th>Datum bestelling</th>
-                                    <th>Verwijder Bestelling</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                 <?php
-                    foreach ($bestellingLijst as $bestelling) {
-                                var_dump(strtotime(date("j-m-Y",$bestelling["dag"])));
-                                echo "<tr class='row'>".
-                                "<td class='col-lg-3'>".$bestelling['bestellingenID'] . "</td>". 
-                                "<td class='col-lg-3'>". $bestelling['klantID']. "</td>".
-                                "<td class='col-lg-3'>". date("j-m-Y",$bestelling["dag"]) ."</td>"."<td class='col-lg-3'>"; 
-                                        if (date("j-m-Y",$bestelling["dag"]) < date("j-m-Y",strtotime('now'))) { echo "Verleden";} 
-                                        elseif (date("j-m-Y",$bestelling["dag"]) == date("j-m-Y",strtotime('now +1 day'))) { echo "Cancelen onmogelijk"; } 
-                                        elseif (date("j-m-Y",$bestelling["dag"]) > date("j-m-Y",strtotime('now +1 day'))) { echo "<a href='accountOverzichtController.php?verwijder=" . $bestelling['bestellingenID']. "' class='btn btn-primary'>Verwijder</a></td>";}
-    
-                                "</tr>";
+                    <thead>
+                        <tr class="row">
+                            <th>Bestellings ID</th>
+                            <th>Gebruiker</th>
+                            <th>Datum bestelling</th>
+                            <th>Verwijder Bestelling</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($bestellingLijst as $bestelling) {
+
+                           
+                            echo "<tr class='row'>" .
+                            "<td class='col-lg-3'>" . $bestelling['bestellingenID'] . "</td>" .
+                            "<td class='col-lg-3'>" . $bestelling['klantID'] . "</td>" .
+                            "<td class='col-lg-3'>" . date("j-m-Y", $bestelling["dag"]) . "</td>" . "<td class='col-lg-3'>";
+
+                            if ($bestelling["dag"] < strtotime('now')) {
+                                echo "Verleden";
+                            } elseif (date("j-m-Y", $bestelling["dag"]) == date("j-m-Y", strtotime('now'))) {
+                                echo "Vandaag, cancelen onmogelijk";
+                            } elseif ($bestelling["dag"] > strtotime('now')) {
+                                echo "<a href='accountOverzichtController.php?verwijder=" . $bestelling['bestellingenID'] . "' class='btn btn-primary'>Verwijder</a></td>";
                             }
-                            ?>
-                        </tbody>
+
+                            "</tr>";
+                        }
+                        ?>
+                    </tbody>
                 </table>
                 <form action="accountOverzichtController.php?action=logout" method="post">
                     <input type="submit" class="btn btn-danger" value="Logout"></input>
                 </form>
             </section>
         </div>
-    </body>
+        <footer>
+            <section class="container">Test Annemie Roelants</section>
+        </footer>
+    </div>
+</body>
 </html>

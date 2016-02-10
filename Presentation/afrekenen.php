@@ -122,6 +122,8 @@
 //                ?>
             </section>
         </div>
-        <footer></footer>
+        <footer>
+            <section class="container">Test Annemie Roelants</section>
+        </footer>
     </body>
 </html>

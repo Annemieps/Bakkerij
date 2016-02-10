@@ -18,16 +18,16 @@
     </head>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-                <a class="navbar-brand" href="indexController.php">Bobba Brett</a>
+            <a class="navbar-brand" href="indexController.php">Bobba Brett</a>
 
-                <ul class="nav navbar-nav">
-                    <li><a href="indexController.php">Home</a></li>
-                    <li  class="active"> <a href="loginController.php">Login</a> </li>
-                    <li> <a href="productenlijstController.php">Bestellen</a> </li>
-                    <li> <a href="accountOverzichtController.php">Account overzicht</a> </li>
-                </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="indexController.php">Home</a></li>
+                <li  class="active"> <a href="loginController.php">Login</a> </li>
+                <li> <a href="productenlijstController.php">Bestellen</a> </li>
+                <li> <a href="accountOverzichtController.php">Account overzicht</a> </li>
+            </ul>
 
-            </div>
+        </div>
     </nav>
     <div class="container">
         <header><h1>Bakkerij Bobba Breatt <br><small>Our bread is out of this world</small></h1></header>
@@ -77,17 +77,19 @@
                     </div>
                     <?php
                 }
-                
                 ?>
-                 
+
 
             </article>
-            <article>
-                <form action="accountOverzichtController.php?action=logout" method="post">
-                    <input type="submit" class="btn btn-danger" value="Logout"></input>
-                </form>
-            </article>
-               
-            <footer></footer>
-            </body>
-            </html>
+        </section>
+        <article>
+            <form action="accountOverzichtController.php?action=logout" method="post">
+                <input type="submit" class="btn btn-danger" value="Logout"></input>
+            </form>
+        </article>
+    </div>
+        <footer>
+            <section class="container">Test Annemie Roelants</section>
+        </footer>
+    </body>
+</html>

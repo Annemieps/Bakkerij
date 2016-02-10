@@ -31,23 +31,23 @@ if (isset($_GET['betalen']) && $_GET['betalen'] = true) {
 
 
     //als de klant toestemming heeft word er gekeken naar de datum, als deze hoger is dan vandaag dan word er gesubmit naar de databank.
-if ($_POST['bestellingsdatum'] > strtotime('now') && $_POST['bestellingsdatum'] < strtotime('+3 day')) {
-    
+    if ($_POST['bestellingsdatum'] > strtotime('now') && $_POST['bestellingsdatum'] < strtotime('+3 day')) {
+
         $bestellinglijnService = new bestellingLijnService();
         $bestellingService = new bestellingService();
 
         //resultaat ophalen of er een bestelling bestaat of niet.
-        //probleem is dat er 
-        $alEenBestelling = $bestellingService->alEenBestelling($_SESSION['user'], date("d-m-y",$_POST['bestellingsdatum']));
+        //Werkt in realiteit niet omdat de datum uit de databank komt met minuten en seconden en die waarmee vergeleken word 
+        //is de gekozen datum met het uur + minuten van de bestelling. Want het is bv: now +1 day. 
+        $datumArray = $bestellingService->getDatum($_SESSION['user']);
+        $alEenBestelling = in_array($_POST['bestellingsdatum'], $datumArray);
 
         //als er geen rijen terug komen voor die user op die datum dan mag er besteld worden
-        if ($alEenBestelling == null) {
+        if ($alEenBestelling == FALSE) {
             $bestellingService->insertBestelling($_SESSION['user'], $_POST['bestellingsdatum']);
-
             
             //alle lijnen afloopen van het order
             for ($i = 0; $i < count($_SESSION['winkelmandje']); $i++) {
-                //$_SESSION["winkelmandje"][$i]["BestellingsID"]
                 $bestellinglijnService->insertLijnen($_SESSION['winkelmandje'][$i]['BestellingsID'], $_SESSION['winkelmandje'][$i]['productID'], $_SESSION['winkelmandje'][$i]['hoeveelheid']);
             }
 
